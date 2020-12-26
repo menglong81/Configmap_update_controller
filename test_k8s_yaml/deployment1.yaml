@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: busybox
+    role: master
+  name: busybox
+  annotations:
+    reloader/command: 'sleep 30'
+spec:
+  containers:
+  - name: busybox
+    image: myhub.fdccloud.com/library/busybox
+    command:
+    - sleep
+    - "3600"
+    volumeMounts:
+    - mountPath: /etc/abc
+      name: configmap-volume
+  volumes:
+    - name: configmap-volume
+      configMap:
+        name: cmtest

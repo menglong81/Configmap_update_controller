@@ -1,0 +1,39 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    derrick.service.type: nodeport
+    derrick.version: 0.1.2
+  labels:
+    derrick.service: hot-update-controler
+  name: hot-update-controler
+spec:
+  ports:
+  - name: "8000"
+    port: 8000
+    targetPort: 8000
+  selector:
+    derrick.service: hot-update-controler
+  type: NodePort
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    derrick.version: 0.1.2
+  labels:
+    derrick.service: hot-update-controler
+  name: hot-update-controler
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        derrick.service: hot-update-controler
+    spec:
+      containers:
+      - image: hot-update:v1
+        name: web
+        ports:
+        - containerPort: 8000

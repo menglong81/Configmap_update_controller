@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cmtest
+  labels:
+    app: cmtest
+data:
+  passwd: |
+    root:x:0:0:root:/root:/bin/bash
+    bin:x:1:1:bin:/bin:/sbin/nologin
+    daemon:x:2:2:daemon:/sbin:/sbin/nologin
+    adm:x:3:4:adm:/var/adm:/sbin/nologin
+    lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+    sync:x:5:0:sync:/sbin:/bin/sync
+    shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+    halt:x:7:0:halt:/sbin:/sbin/halt
+    mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+    operator:x:11:0:operator:/root:/sbin/nologin
+    games:x:12:100:games:/usr/games:/sbin/nologin
+    ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+    nobody:x:99:99:Nobody:/:/sbin/nologin
+    systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+    dbus:x:81:81:System message bus:/:/sbin/nologin
+    polkitd:x:999:998:User for polkitd:/:/sbin/nologin
+    sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+    postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+    tcpdump:x:72:72::/:/sbin/nologin
+    elk:x:1000:1000::/home/elk:/bin/bash
+    ntp:x:38:38::/etc/ntp:/sbin/nologin
+    dockerroot:x:998:995:Docker User:/var/lib/docker:/sbin/nologin
+    zookeeper:x:1001:1001::/home/zookeeper:/bin/bash
+    kafka:x:1002:1002::/home/kafka:/bin/bash  
+  group: |
+    127.0.0.1 localhost
+    10.11.90.191 host1
+    10.11.90.202 host2 harbor.test.com
+    10.11.90.138 host3
+    10.11.90.65 host4
+    10.11.90.45 host5
+    10.11.90.45 host6
